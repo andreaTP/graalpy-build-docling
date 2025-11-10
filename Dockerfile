@@ -25,6 +25,8 @@ RUN apt-get update && \
     liblzma-dev \
     cmake make ninja-build pkg-config autoconf automake libtool \
     gfortran \
+    gcc \
+    g++ \
     llvm \
     llvm-dev \
     flang \
