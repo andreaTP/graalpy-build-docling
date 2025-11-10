@@ -29,7 +29,6 @@ RUN apt-get update && \
     g++ \
     llvm \
     llvm-dev \
-    flang \
     liblapack-dev \
     libblas-dev \
     libopenblas-dev \
