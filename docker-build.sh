@@ -11,10 +11,9 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
     
     echo "Running container with resource limits (8 CPUs, 32GB RAM)..."
     docker run --rm \
-        --memory=32g \
+        --memory=12g \
         --memory-swap=40g \
-        --cpus=8 \
-        --memory-reservation=16g \
+        --cpus=3 \
         -v "${SCRIPT_DIR}/wheels:/workspace/wheels" \
         docling-wheel-builder
 )
