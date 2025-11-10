@@ -23,7 +23,14 @@ RUN apt-get update && \
     libxml2-dev \
     libxmlsec1-dev \
     liblzma-dev \
-    ninja-build \
+    cmake make ninja-build pkg-config autoconf automake libtool \
+    gfortran \
+    llvm \
+    llvm-dev \
+    flang \
+    liblapack-dev \
+    libblas-dev \
+    libopenblas-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
