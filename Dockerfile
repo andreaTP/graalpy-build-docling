@@ -32,6 +32,7 @@ RUN apt-get update && \
     liblapack-dev \
     libblas-dev \
     libopenblas-dev \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 # Set working directory

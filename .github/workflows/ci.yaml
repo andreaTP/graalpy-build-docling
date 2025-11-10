@@ -7,8 +7,10 @@ jobs:
   build:
     name: build
     runs-on: "ubuntu-latest"
+    timeout-minutes: 500
     steps:
       - name: Checkout sources
         uses: actions/checkout@v5
       - name: Build
+        timeout-minutes: 360
         run: ./docker-build.sh
