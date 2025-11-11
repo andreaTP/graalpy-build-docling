@@ -53,16 +53,16 @@ jobs:
           graalpy-25.0.1-linux-amd64/bin/graalpy -m pip install --upgrade pip setuptools wheel
       - name: wheel pandas
         timeout-minutes: 360
-        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pandas=2.2.3
+        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pandas==2.2.3
       - name: wheel numpy
         timeout-minutes: 360
-        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose numpy=2.2.6
+        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose numpy==2.2.6
       - name: wheel scipy
         timeout-minutes: 360
-        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose scipy=1.16.3
+        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose scipy==1.16.3
       - name: wheel torch
         timeout-minutes: 360
-        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose torch=2.7.0
+        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose torch==2.7.0
       - name: wheel docling
         timeout-minutes: 360
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose docling==2.58.0
