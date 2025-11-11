@@ -44,19 +44,25 @@ jobs:
             liblapack-dev \
             libblas-dev \
             libopenblas-dev \
-            git
+            git \
+            libtiff5-dev libjpeg8-dev libopenjp2-7-dev zlib1g-dev \
+            libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python3-tk \
+            libharfbuzz-dev libfribidi-dev libxcb1-dev
       - name: get graalpy
         run: ./download-graalpy.sh
       - name: setup python
         run: |
           graalpy-25.0.1-linux-amd64/bin/graalpy -I -m ensurepip
           graalpy-25.0.1-linux-amd64/bin/graalpy -m pip install --upgrade pip setuptools wheel
-      - name: wheel pandas
+      - name: wheel pillow
         timeout-minutes: 360
-        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pandas==2.2.3
+        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pillow==11.3.0
       - name: wheel numpy
         timeout-minutes: 360
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose numpy==2.2.6
+      - name: wheel pandas
+        timeout-minutes: 360
+        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pandas==2.2.3
       - name: wheel scipy
         timeout-minutes: 360
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose scipy==1.16.3
