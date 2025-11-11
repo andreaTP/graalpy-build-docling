@@ -16,6 +16,7 @@ jobs:
       #   run: ./docker-build.sh
       - name: no docker
         run: |
+          sudo apt-get update
           sudo apt-get install -y \
             wget \
             build-essential \
