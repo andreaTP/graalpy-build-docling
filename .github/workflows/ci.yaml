@@ -48,7 +48,7 @@ jobs:
             libtiff5-dev libjpeg8-dev libopenjp2-7-dev zlib1g-dev \
             libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python3-tk \
             libharfbuzz-dev libfribidi-dev libxcb1-dev \
-            python3-dev python3-numpy
+            python3-numpy
       - name: get graalpy
         run: ./download-graalpy.sh
       - name: setup python
@@ -63,7 +63,9 @@ jobs:
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose numpy==2.2.6
       - name: wheel shapely
         timeout-minutes: 360
-        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose shapely==2.1.2
+        run: |
+          export CFLAGS="-I$(python3 -c 'import numpy; print(numpy.get_include())') $CFLAGS"
+          graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose shapely==2.1.2
       - name: wheel pandas
         timeout-minutes: 360
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pandas==2.2.3
