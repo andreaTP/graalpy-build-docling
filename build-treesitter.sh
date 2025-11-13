@@ -9,9 +9,6 @@ git checkout v0.23.1
 # Init and update the submodule (this contains the actual C library)
 git submodule update --init --recursive
 
-# Build and wheel the Python runtime
-graalpy -m pip wheel --verbose . -w ../wheels
-
 # This submodule is your canonical Tree-sitter source
 export TREE_SITTER_ROOT="$PWD/tree_sitter"
 cd ..
