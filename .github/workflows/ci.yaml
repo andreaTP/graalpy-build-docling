@@ -56,22 +56,9 @@ jobs:
         run: |
           graalpy-25.0.1-linux-amd64/bin/graalpy -I -m ensurepip
           graalpy-25.0.1-linux-amd64/bin/graalpy -m pip install --upgrade pip setuptools wheel
-      - name: wheel pillow
+      - name: wheel treesitter
         timeout-minutes: 360
         run: ./build-treesitter.sh
-      # - name: compile treesitter
-      #   run: |
-      #     git clone https://github.com/tree-sitter/tree-sitter.git
-      #     cd tree-sitter
-      #     git checkout f629fd4aed892685c581199da09387d85806b062
-      #     make
-      #     sudo make install
-      # - name: wheel treesitter-c
-      #   timeout-minutes: 360
-      #   run: |
-      #     ls -al /usr/local/include/tree_sitter
-      #     export CFLAGS="-I/usr/local/include/tree_sitter"
-      #     graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose tree-sitter-c==0.23.6
       - name: wheel pillow
         timeout-minutes: 360
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pillow==11.3.0
