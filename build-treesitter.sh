@@ -8,7 +8,7 @@ if [[ ! -x "$GRAALPY_BIN" ]]; then
   exit 1
 fi
 
-# npm install -g tree-sitter-cli
+npm install -g tree-sitter-cli
 
 declare -A GRAMMARS=(
   [tree-sitter-c]=v0.23.6
