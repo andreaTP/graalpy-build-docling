@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-GRAALPY_BIN=graalpy-25.0.1-linux-amd64/bin/graalpy
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+GRAALPY_BIN=${SCRIPT_DIR}/graalpy-25.0.1-linux-amd64/bin/graalpy
 if [[ ! -x "$GRAALPY_BIN" ]]; then
   echo "error: GraalPy not found at $GRAALPY_BIN" >&2
   echo "Set GRAALPY_BIN to an executable GraalPy binary and retry." >&2
