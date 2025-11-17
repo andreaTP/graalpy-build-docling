@@ -1,0 +1,4 @@
+# Constraints file to force pythran 0.18.0 for scipy build
+# This ensures scipy uses the compatible pythran version with GraalPy
+pythran==0.18.0
+
