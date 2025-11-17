@@ -53,5 +53,3 @@ for repo in "${!GRAMMARS[@]}"; do
 
   popd >/dev/null
 done
-
-popd >/dev/null
