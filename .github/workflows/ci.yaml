@@ -59,6 +59,10 @@ jobs:
       - name: wheel treesitter
         timeout-minutes: 360
         run: ./build-treesitter.sh
+      # pythran breaks at version 0.18.1
+      - name: wheel pythran
+        timeout-minutes: 360
+        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pythran==0.18.0
       - name: wheel pillow
         timeout-minutes: 360
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pillow==11.3.0
