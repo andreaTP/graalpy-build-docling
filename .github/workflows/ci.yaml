@@ -54,6 +54,11 @@ jobs:
         run: ./download-graalpy.sh
       - name: setup python
         run: |
+          echo "" >> graalpy-25.0.1-linux-amd64/lib/graalpy25.0/patches/metadata.toml
+          echo "[[pythran.rules]]" >> graalpy-25.0.1-linux-amd64/lib/graalpy25.0/patches/metadata.toml
+          echo "version = '== 0.18.0'" >> graalpy-25.0.1-linux-amd64/lib/graalpy25.0/patches/metadata.toml
+          echo "" >> graalpy-25.0.1-linux-amd64/lib/graalpy25.0/patches/metadata.toml
+
           graalpy-25.0.1-linux-amd64/bin/graalpy -I -m ensurepip
           graalpy-25.0.1-linux-amd64/bin/graalpy -m pip install --upgrade pip setuptools wheel
       - name: wheel treesitter
@@ -79,7 +84,7 @@ jobs:
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pandas==2.2.3
       - name: wheel scipy
         timeout-minutes: 360
-        run: PIP_DEPENDENCY_OVERRIDE="pythran==0.18.0" graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose scipy==1.16.3 -c constraints-scipy.txt
+        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose scipy==1.16.3
       - name: wheel torch
         timeout-minutes: 360
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose torch==2.7.0
