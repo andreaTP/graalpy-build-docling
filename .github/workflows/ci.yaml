@@ -57,6 +57,7 @@ jobs:
           echo "" >> graalpy-25.0.1-linux-amd64/lib/graalpy25.0/patches/metadata.toml
           echo "[[pythran.rules]]" >> graalpy-25.0.1-linux-amd64/lib/graalpy25.0/patches/metadata.toml
           echo "version = '== 0.18.0'" >> graalpy-25.0.1-linux-amd64/lib/graalpy25.0/patches/metadata.toml
+          echo "install-priority = 0" >> graalpy-25.0.1-linux-amd64/lib/graalpy25.0/patches/metadata.toml
           echo "" >> graalpy-25.0.1-linux-amd64/lib/graalpy25.0/patches/metadata.toml
 
           graalpy-25.0.1-linux-amd64/bin/graalpy -I -m ensurepip
