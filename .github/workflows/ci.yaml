@@ -63,9 +63,6 @@ jobs:
       - name: wheel pythran
         timeout-minutes: 360
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pythran==0.18.0
-      - name: install pythran 0.18.0 and scipy build deps
-        run: |
-          graalpy-25.0.1-linux-amd64/bin/graalpy -m pip install pythran==0.18.0 mesonpy ninja
       - name: wheel pillow
         timeout-minutes: 360
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pillow==11.3.0
@@ -82,8 +79,7 @@ jobs:
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pandas==2.2.3
       - name: wheel scipy
         timeout-minutes: 360
-        # --no-build-isolation uses pre-installed pythran 0.18.0 instead of downloading 0.18.1
-        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose --no-build-isolation scipy==1.16.3
+        run: PIP_DEPENDENCY_OVERRIDE="pythran==0.18.0" graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose scipy==1.16.3 -c constraints-scipy.txt
       - name: wheel torch
         timeout-minutes: 360
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose torch==2.7.0
