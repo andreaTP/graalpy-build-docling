@@ -85,7 +85,10 @@ jobs:
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pandas==2.2.3
       - name: wheel scipy
         timeout-minutes: 360
-        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose scipy==1.16.3 --no-deps
+        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose scipy==1.16.3
+        # to inhibit the mechanism that downloads newer metadata from github. You can do that when you set the PIP_GRAALPY_PATCHES_URL to an empty string
+        env:
+          PIP_GRAALPY_PATCHES_URL: ""
       - name: wheel torch
         timeout-minutes: 360
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose torch==2.7.0
