@@ -87,7 +87,7 @@ jobs:
           echo "install-priority = 0" >> patches/metadata.toml
           echo "" >> patches/metadata.toml
 
-          export PIP_GRAALPY_PATCHES_URL=file:/${PWD}/patches
+          export PIP_GRAALPY_PATCHES_URL=${PWD}/patches
 
           graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose scipy==1.16.3
       - name: wheel torch
