@@ -80,14 +80,7 @@ jobs:
       - name: wheel scipy
         timeout-minutes: 360
         run: |
-          cp -r graalpy-25.0.1-linux-amd64/lib/graalpy25.0/patches .
-          echo "" >> patches/metadata.toml
-          echo "[[pythran.rules]]" >> patches/metadata.toml
-          echo "version = '== 0.18.0'" >> patches/metadata.toml
-          echo "install-priority = 0" >> patches/metadata.toml
-          echo "" >> patches/metadata.toml
-
-          export PIP_GRAALPY_PATCHES_URL=${PWD}/patches
+          export PIP_GRAALPY_PATCHES_URL=https://raw.githubusercontent.com/oracle/graalpython/refs/heads/msimacek/GR-71528_update_pythran/graalpython/lib-graalpython/patches/
 
           graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose scipy==1.16.3
       - name: wheel torch
