@@ -15,9 +15,9 @@ npm install -g tree-sitter-cli
 declare -A GRAMMARS=(
   [tree-sitter-c]=v0.23.6
   [tree-sitter-java]=v0.23.5
-  [tree-sitter-javascript]=v0.23.2
+  [tree-sitter-javascript]=v0.23.1
   [tree-sitter-python]=v0.23.2
-  [tree-sitter-typescript]=v0.23.0
+  [tree-sitter-typescript]=v0.23.2
 )
 
 echo "==> Cloning grammars"
