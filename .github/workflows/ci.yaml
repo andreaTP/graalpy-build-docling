@@ -84,6 +84,10 @@ jobs:
         timeout-minutes: 360
         run: |
           export PIP_GRAALPY_PATCHES_URL=https://raw.githubusercontent.com/oracle/graalpython/refs/heads/master/graalpython/lib-graalpython/patches/
+          
+          # Install pre-built treesitter wheels to avoid building from source
+          graalpy-25.0.1-linux-amd64/bin/graalpy -m pip install --find-links=. tree-sitter-java tree-sitter-typescript || true
+          export CFLAGS="-I$(pwd)/tree-sitter-java/src -I$(pwd)/tree-sitter-typescript/typescript/src -I$(pwd)/tree-sitter-typescript/tsx/src ${CFLAGS:-}"
 
           graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose scipy==1.16.3
       - name: wheel torch
