@@ -62,7 +62,10 @@ jobs:
       # pythran breaks at version 0.18.1
       - name: wheel pythran
         timeout-minutes: 360
-        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pythran==0.18.0
+        run: |
+          export PIP_GRAALPY_PATCHES_URL=https://raw.githubusercontent.com/oracle/graalpython/refs/heads/master/graalpython/lib-graalpython/patches/
+
+          graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pythran==0.18.1
       - name: wheel pillow
         timeout-minutes: 360
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose pillow==11.3.0
@@ -80,7 +83,7 @@ jobs:
       - name: wheel scipy
         timeout-minutes: 360
         run: |
-          export PIP_GRAALPY_PATCHES_URL=https://raw.githubusercontent.com/oracle/graalpython/refs/heads/msimacek/GR-71528_update_pythran/graalpython/lib-graalpython/patches/
+          export PIP_GRAALPY_PATCHES_URL=https://raw.githubusercontent.com/oracle/graalpython/refs/heads/master/graalpython/lib-graalpython/patches/
 
           graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose scipy==1.16.3
       - name: wheel torch
