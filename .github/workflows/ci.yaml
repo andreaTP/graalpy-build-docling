@@ -95,6 +95,7 @@ jobs:
         run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose torch==2.7.0
       - name: wheel docling
         timeout-minutes: 360
-        run: graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose docling==2.58.0
-        
+        run: |
+          export CFLAGS="-I$(pwd)/tree-sitter-java/src -I$(pwd)/tree-sitter-typescript/typescript/src -I$(pwd)/tree-sitter-typescript/tsx/src ${CFLAGS:-}"
+          graalpy-25.0.1-linux-amd64/bin/graalpy -m pip wheel --verbose docling==2.58.0
         
